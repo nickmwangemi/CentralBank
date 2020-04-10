@@ -318,17 +318,31 @@
                   <h6 class="m-0 font-weight-bold text-primary">Deposit Funds </h6>
                 </div>
                 <div class="card-body">
-                <h3>Welcome, {{ current_user }} </h3>
-                  <p>You can now deposit money into your account fast, easy and for free!</p>
-                  <br>
-                  <br>
+                <h3>Welcome, {{ customer.first_name }} {{ customer.last_name }}</h3>
+                  <p>You can now deposit money into your account fast and easy!</p>
+                  
+                  
+                  <p>Current Balance: {{ account.balance }}</p>
+                 
+
                     <form action="{ url 'customers:money_transfer' }" method="post">
                         {% csrf_token %}
 
-                        Enter the amount in Ksh.
-                        <input type="number" required>
-                        <br>
-                        <br>
+                       <label for="">Select your account</label>
+                                  <br>
+                                <select name="account" id="">
+                                  <option value=""></option>
+                                      {% for account in accounts %}
+                                        <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                      {% endfor %}
+                                 </select>
+                                <br>
+                      
+                                <label for="">Enter the amount</label>
+                                <br>
+                                  <input type="number" name="amount" id="" required>
+                                <br>
+                                <br>
                     <a href="#" class="btn btn-success btn-icon-split">
                         <span class="icon text-white-50">
                         <i class="fas fa-check"></i>

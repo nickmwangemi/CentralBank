@@ -7,11 +7,11 @@ class MoneyTransferAdmin(admin.ModelAdmin):
     list_display = [ 'sender','amount','recipient','mobile_number']
 
 class DepositAdmin(admin.ModelAdmin):
-    list_display = [ 'amount','date_of_transaction','customer']
+    list_display = [ 'amount','timestamp','customer']
 
 
 class WithdrawalAdmin(admin.ModelAdmin):
-   list_display = [ 'amount','date_of_transaction']
+   list_display = [ 'amount','timestamp']
 
 
 admin.site.register(Deposit,DepositAdmin)

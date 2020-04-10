@@ -9,11 +9,15 @@ def account_status(request,pk):
     customer = Customer.objects.get(pk=pk)
     account = Account.objects.get(pk=pk)
     deposits = Deposit.objects.filter(pk=pk)
+    withdrawals = Withdrawal.objects.filter(pk=pk)
+    money_transfers = MoneyTransfer.objects.filter(pk=pk)
 
     context = {
         'customer': customer,
         'account': account,
         'deposits':deposits,
+        'withdrawals':withdrawals,
+        'money_transfers':money_transfers,
     }
 
 
@@ -23,6 +27,7 @@ def account_status(request,pk):
 def money_transfer(request,pk):
     # get current user
     customer = Customer.objects.get(pk=pk)
+    accounts = Account.objects.all()
     
     if request.method == "POST":
         form = request.POST
@@ -34,29 +39,36 @@ def money_transfer(request,pk):
     # Status.objects.get(username=request.user)
     context = {
         'customer': customer,
-        # 'account':account
+        'accounts':accounts
     }
 
     return render(request,'customers/money_transfer.html',context)
 
 
 def deposit(request,pk):
-     # get current user
+    account = Account.objects.get(pk=pk)
     customer = Customer.objects.get(pk=pk)
+    accounts = Account.objects.all()
     
 
     context = {
+        'account':account,
         'customer': customer,
+        'accounts':accounts,
         
     }
 
     return render(request,'customers/deposit.html',context)
 
 def withdraw(request,pk):
-     # get current user
+    account = Account.objects.get(pk=pk)
     customer = Customer.objects.get(pk=pk)
+    accounts = Account.objects.all()
     context = {
+        'account':account,
         'customer': customer,
+        'accounts':accounts,
+        
     }
 
     return render(request,'customers/withdraw.html',context)

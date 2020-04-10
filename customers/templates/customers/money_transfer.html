@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dashboard</title>
+  <title>Money Transfer | Central Bank</title>
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -326,8 +326,47 @@
                     <form action="{ url 'customers:money_transfer' }" method="post">
                         {% csrf_token %}
 
-                        <h3>
-                            {{ form.as_p }}
+                      
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <label for="">Select your account</label>
+                                  <br>
+                                <select name="account" id="">
+                                  <option value=""></option>
+                                      {% for account in accounts %}
+                                        <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                      {% endfor %}
+                                 </select>
+                                <br>
+                      
+                                <label for="">Enter the amount</label>
+                                <br>
+                                  <input type="number" name="amount" id="" required>
+                                <br>
+                              
+                                 <label for="">Select the recipient's account</label>
+                                  <br>
+                                <select name="account" id="">
+                                  <option value=""></option>
+                                      {% for account in accounts %}
+                                        <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                      {% endfor %}
+                                 </select>
+                                <br>
+                              
+                                 <label for="">Enter your mobile number</label>
+                                 <br>
+                                <input type="text" name="mobile_number" id="" required>
+                                <br>
+                              
+                            
+
+
+
+
+
+
+                            </form>
                         </h3>
                         <br>
                         <p>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of money transfer.</p> <br>
