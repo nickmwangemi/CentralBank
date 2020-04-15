@@ -8,7 +8,7 @@ from customers.models import Customer
 
 class MoneyTransfer(models.Model):
     sender = models.ForeignKey(Account,on_delete=models.CASCADE)
-    amount =  models.IntegerField()
+    amount =  models.FloatField()
     recipient = models.ForeignKey(Account,related_name='account',on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     mobile_number = models.CharField(max_length=50)

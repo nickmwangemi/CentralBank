@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Customer(models.Model):
     first_name = models.CharField(max_length=100)
@@ -7,6 +8,7 @@ class Customer(models.Model):
     id_number = models.PositiveIntegerField()
     mobile_number = models.CharField(max_length=20)
     pin = models.CharField(max_length=10)
+    
 
     
     class Meta:

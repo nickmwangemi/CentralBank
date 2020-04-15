@@ -14,10 +14,9 @@ def login(request):
         pin = form['pin']
         mobile_numbers = []
         pins = []
-        for customer in customers:
-            mobile_numbers.append(customer.mobile_number)
-            pins.append(customer.pin)
-        if(mobile_number in mobile_numbers and pin in pins):
+
+        customer = Customer.objects.get(mobile_number=mobile_number)
+        if customer is not None:
             return redirect('customers:account_status',customer.pk)
         else:
             messages.info(request, 'Invalid Phone Number or Pin')

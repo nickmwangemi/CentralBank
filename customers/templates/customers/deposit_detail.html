@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Withdraw | Central Bank</title>
+  <title>Deposit | Central Bank</title>
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -51,56 +51,7 @@
       <hr class="sidebar-divider">
 
 
-       <!-- Heading -->
-      <div class="sidebar-heading">
-        My Account
-      </div>
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:account_status' customer.id %}">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Account Status</span></a>
-      </li>
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:money_transfer' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Money Transfer</span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:deposit' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Deposit</span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:withdraw' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Withdraw </span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:edit_details' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Edit Account Details</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-
+      
       
 
       <!-- Divider -->
@@ -308,46 +259,39 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Withdraw</h1>
+            <h1 class="h3 mb-0 text-gray-800">Deposit Details</h1>
           </div>
 
             <div class="col-lg-6">
 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Withdraw Funds </h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Deposit Details </h6>
                 </div>
                 <div class="card-body">
-                <h3>Welcome, {{ customer.first_name }}  {{ customer.last_name }}</h3>
-                  <p>You can now withdraw money into your account fast and easy!</p>
-                  <p>Current Balance: {{ account.balance }} </p>
-
-
-                    {% if messages %}
+              
+                  
+                  
+                 
+                     {% if messages %}
                   <ul class="messages">
                       {% for message in messages %}
                       <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                       {% endfor %}
                   </ul>
                   {% endif %}
-                  <br>
-
                   
-       
-                    <form action="" method="post">
-                        {% csrf_token %}
-                                <label for="">Enter the amount</label>
-                                <br>
-                                  <input type="number" name="amount" id="" required>
-                                <br>
-                                <br>
-                                <input type="submit" value="Withdraw Funds">
-  
-                    </a>
-                    </form>
+                  <br>
+                  <br>
+                 <br>
+                 <br>
+                  <a href="{% url 'customers:deposit' customer.id %}">Go Back</a>
+      
                     <br>
-                    <p>By withdrawing money from your account, you agree to the <a href="#">Terms and Conditions</a> of money transfer.</p> <br>
-                                 <div class="my-2"></div>
+                 
+            </div>
+
+      </div>
                  
             </div>
 

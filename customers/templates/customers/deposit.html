@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dashboard</title>
+  <title>Deposit | Central Bank</title>
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -320,15 +320,20 @@
                 <div class="card-body">
                 <h3>Welcome, {{ customer.first_name }} {{ customer.last_name }}</h3>
                   <p>You can now deposit money into your account fast and easy!</p>
+ 
+
+                  <br>
+
+
+
                   
-                  
-                  <p>Current Balance: {{ account.balance }}</p>
+                  <p>Current Balance: Ksh.{{ current_balance }}</p>
                  
 
-                    <form action="{ url 'customers:money_transfer' }" method="post">
+                    <form action="" method="post">
                         {% csrf_token %}
 
-                       <label for="">Select your account</label>
+                       {% comment %} <label for="">Select your account</label>
                                   <br>
                                 <select name="account" id="">
                                   <option value=""></option>
@@ -336,18 +341,14 @@
                                         <option value="{{ account.id }}">{{ account.account_number }}</option>
                                       {% endfor %}
                                  </select>
-                                <br>
+                                <br> {% endcomment %}
                       
                                 <label for="">Enter the amount</label>
                                 <br>
                                   <input type="number" name="amount" id="" required>
                                 <br>
                                 <br>
-                    <a href="#" class="btn btn-success btn-icon-split">
-                        <span class="icon text-white-50">
-                        <i class="fas fa-check"></i>
-                        </span>
-                        <span class="text">Deposit Funds</span>
+                            <input type="submit" value="Deposit Funds">
                     </a>
                     </form>
                     <br>

@@ -323,7 +323,7 @@
                 <p>Welcome, {{ customer.first_name }} {{  customer.last_name }},</p>
                 {% endfor %}
                   <p>You can now send money to other account holders for free!</p>
-                    <form action="{ url 'customers:money_transfer' }" method="post">
+                    <form action="{ url 'customers:money_transfer' customer.id }" method="post">
                         {% csrf_token %}
 
                       
@@ -359,25 +359,12 @@
                                 <input type="text" name="mobile_number" id="" required>
                                 <br>
                               
-                            
-
-
-
-
-
-
-                            </form>
                         </h3>
                         <br>
                         <p>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of money transfer.</p> <br>
                                  <div class="my-2"></div>
+                        <input type="submit" value="Send Money">
 
-                  <a href="#" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span class="text">Send Money</span>
-                  </a>
                     </form>
                     
                  

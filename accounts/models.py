@@ -5,7 +5,6 @@ from django.core.validators import (
 )
 from customers.models import Customer
 
-
 # Create your models here.
 class Account(models.Model):
     ACCOUNT_TYPE_CHOICES = [
@@ -30,6 +29,7 @@ class Account(models.Model):
     account_type = models.CharField(max_length=100,choices=ACCOUNT_TYPE_CHOICES,default='SAVINGS')
     currency = models.CharField(max_length=15,choices=CURRENCY_CHOICE,default='KENYA SHILLINGS')
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE,default=1)
+    
     class Meta:
         db_table = 'tbl_Accounts'
 
