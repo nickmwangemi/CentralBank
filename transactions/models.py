@@ -19,6 +19,7 @@ class MoneyTransfer(models.Model):
 
 class Deposit(models.Model):
     customer=models.ForeignKey(Customer,on_delete=models.CASCADE,default=1)
+    account = models.ForeignKey(Account,on_delete=models.CASCADE)
     amount = models.IntegerField()
     timestamp = models.DateTimeField(auto_now_add=True)
    

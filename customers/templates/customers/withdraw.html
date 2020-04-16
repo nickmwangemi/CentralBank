@@ -319,17 +319,9 @@
                 </div>
                 <div class="card-body">
                 <h3>Welcome, {{ customer.first_name }}  {{ customer.last_name }}</h3>
-                  <p>You can now withdraw money into your account fast and easy!</p>
-                  <p>Current Balance: {{ account.balance }} </p>
+                  <p>You can now withdraw money from your account fast and easy!</p>
+                  <p>Current Balance: Ksh.{{ account.balance }} </p>
 
-
-                    {% if messages %}
-                  <ul class="messages">
-                      {% for message in messages %}
-                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                      {% endfor %}
-                  </ul>
-                  {% endif %}
                   <br>
 
                   

@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Account Status | Central Bank</title>
+  <title>Money Transfer Details | Central Bank</title>
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -51,56 +51,7 @@
       <hr class="sidebar-divider">
 
 
-       <!-- Heading -->
-      <div class="sidebar-heading">
-        My Account
-      </div>
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:account_status' customer.id %}">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Account Status</span></a>
-      </li>
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:money_transfer' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Money Transfer</span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:deposit' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Deposit</span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:withdraw' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Withdraw </span></a>
-      </li>
-
-       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'customers:edit_details' customer.id %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Edit Account Details</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-
+      
       
 
       <!-- Divider -->
@@ -308,173 +259,44 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Account Overview</h1>
+            <h1 class="h3 mb-0 text-gray-800">Money Transfer</h1>
           </div>
-          
-          <p>Welcome, {{ customer.first_name }} {{  customer.last_name }}</p>
-          
-          <!-- Content Row -->
-          <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Account Number</div>
-                     
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ account.account_number }}</div>
-                    
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
+            <div class="col-lg-6">
+
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Money Transfer Details </h6>
                 </div>
-              </div>
+                <div class="card-body">
+              
+                  
+                  
+                 
+                     {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+                  
+                  <br>
+                  <br>
+                  
+                 <br>
+                 <br>
+                  <a href="{% url 'customers:money_transfer' customer.id %}">Go Back</a>
+      
+                    <br>
+                 
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Balance</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Ksh. {{ account.balance }}</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Account Type</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ account.account_type }}</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>  
-
-
-             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Currency</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ account.currency }}</div>
-                      
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>  
       </div>
-
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Transaction History</h6>
-            </div>
-            <h4> Deposits</h4>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead></thead>
-                    <tr>
-                      <th>Amount</th>
-                      <th>Timestamp</th>
-                    </tr>
-                    <tr>
-                      {% for deposit in deposits %}
-                      <td>{{ deposit.amount }}</td>
-                      <td>{{ deposit.timestamp }} </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-              </div>
-            </div>
-          
-
-            <h4> Withdrawals</h4>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Amount</th>
-                      <th>Timestamp</th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for withdrawal in withdrawals %}
-                    <tr>
-                      <td>{{ withdrawal.amount }}</td>
-                      <td>{{ withdrawal.timestamp }} </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
+                 
             </div>
 
-            <h4> Money Transfers</h4>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Amount</th>
-                      <th>Timestamp</th>
-                      <th>Sender</th>
-                      <th>Receiver</th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for money_transfer in money_transfers %}
-                    <tr>
-                      <td>{{ money_transfer.amount }}</td>
-                      <td>{{ money_transfer.timestamp }} </td>
-                      <td>{{ money_transfer.sender }}</td>
-                      <td>{{ money_transfer.recipient }}</td>
-                    </tr>
-
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-
-      
-      
-
-
-
+      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->

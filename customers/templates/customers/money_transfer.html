@@ -323,22 +323,12 @@
                 <p>Welcome, {{ customer.first_name }} {{  customer.last_name }},</p>
                 {% endfor %}
                   <p>You can now send money to other account holders for free!</p>
-                    <form action="{ url 'customers:money_transfer' customer.id }" method="post">
-                        {% csrf_token %}
-
-                      
+                  <p>Current Balance:  Ksh.{{ account.balance }}</p>
+                  <br>
+                  
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                <label for="">Select your account</label>
-                                  <br>
-                                <select name="account" id="">
-                                  <option value=""></option>
-                                      {% for account in accounts %}
-                                        <option value="{{ account.id }}">{{ account.account_number }}</option>
-                                      {% endfor %}
-                                 </select>
-                                <br>
-                      
+                                
                                 <label for="">Enter the amount</label>
                                 <br>
                                   <input type="number" name="amount" id="" required>

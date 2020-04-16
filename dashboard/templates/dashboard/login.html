@@ -35,6 +35,18 @@
                     <h1 class="h4 text-gray-900 mb-4">Please login to proceed.</h1>
                   </div>
 
+                 
+                     {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+
+
+
+
     <form action="" method="POST">
         {% csrf_token %}
         <label for="">Enter your mobile number</label>
